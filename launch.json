@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Ansible Playbook",
+            "type": "python",
+            "request": "launch",
+            "program": "bin/run.py",
+            "args": [
+                "playbooks/test.yml",
+                "-i", "inventory_dir"
+            ],
+            "env": {
+                "ANSIBLE_VAULT_PASSWORD_FILE": "your_vault_password_file",
+            },
+            "console": "integratedTerminal"
+        }
+    ]
+}
+
