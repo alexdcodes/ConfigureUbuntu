@@ -1,4 +1,4 @@
-# Automating ISO deployment. 
+# Automating ISO Legacy and VM deployment. 
 
 
 ## Security 
