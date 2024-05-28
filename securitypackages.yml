@@ -1,0 +1,28 @@
+# Playbook for Updating Security
+# Rocky/Fedora/CentOS/Alma script next -- notes for self: update this as reconfiguring next machine
+- name: Update and upgrade apt-get / apt packages on Ubuntu system
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 5069 
+
+- name: Install Rkhunter on Ubuntu
+  become: true
+  apt:
+    install: rkhunter
+
+- name: Install Tripwire on Ubuntu 
+  become: true
+  apt:
+    install: tripwire
+
+- name: Install Fail2ban on Ubuntu 
+  become: true
+  apt:
+    install: fail2ban
+
+- name: Install Crowdsec on Ubuntu 
+  become: true
+  apt:
+    install: crowdsec
