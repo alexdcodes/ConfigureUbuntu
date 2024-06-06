@@ -17,7 +17,7 @@
       apt:
         name: rkhunter 
 
-    - name: Install USB Guard 
+    - name: Install USBGuard 
       become: true
       apt:
         name: usbguard 
@@ -27,7 +27,15 @@
       apt:
         name: crowdsec 
 
-    - name: Run a command for Crowdsec Status Check
-      ansible.builtin.raw: systemctl status crowdsec
-      args:
-        executable: /bin/bash
+    - name: Crowdsec Status Check
+      service:
+        name: crowdsec
+        state: started
+        enabled: yes 
+    
+    - name: UsbGuard Check
+      service:
+        name: usbguard
+        state: started
+        enabled: yes 
+
