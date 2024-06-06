@@ -1,0 +1,33 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Update Ubuntu System
+      become: true
+      apt:
+        upgrade: yes
+        cache_valid_time: 5069
+
+    - name: Install Rkhunter
+      become: true
+      apt: 
+        name: rkhunter 
+
+    - name: Install Tripwire
+      become: true
+      apt:
+        name: rkhunter 
+
+    - name: Install USB Guard 
+      become: true
+      apt:
+        name: usbguard 
+
+    - name: Install Crowdsec
+      become: true
+      apt:
+        name: crowdsec 
+
+    - name: Run a command for Crowdsec Status Check
+      ansible.builtin.raw: systemctl status crowdsec
+      args:
+        executable: /bin/bash
