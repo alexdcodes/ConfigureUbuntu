@@ -14,22 +14,22 @@
     - name: Install Rkhunter on Ubuntu
       become: true
       apt:
-        install: rkhunter
+        name: rkhunter
 
     - name: Install Tripwire on Ubuntu 
       become: true
       apt:
-        install: tripwire
+        name: tripwire
 
     - name: Install Fail2ban on Ubuntu 
       become: true
       apt:
-        install: fail2ban 
+        name: fail2ban 
 
     - name: Install Crowdsec on Ubuntu 
       become: true
       apt:
-        install: crowdsec
+        name: crowdsec
 
     - name: Run a command for Crowdsec Status Check
       ansible.builtin.raw: systemctl status crowdsec
