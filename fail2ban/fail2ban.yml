@@ -1,0 +1,40 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Update system 
+      become: true
+      apt:
+        upgrade: yes
+        cache_valid_time: 6969
+
+    - name: Download Fail2ban.deb 
+      ansible.builtin.raw: wget -O fail2ban.deb https://github.com/fail2ban/fail2ban/releases/download/1.1.0/fail2ban_1.1.0-1.upstream1_all.deb
+      args:
+        executable: /bin/bash
+
+    - name: Download Fail2ban.asc 
+      ansible.builtin.raw: wget -O fail2ban.deb.asc https://github.com/fail2ban/fail2ban/releases/download/1.1.0/fail2ban_1.1.0-1.upstream1_all.deb.asc
+      args:
+        executable: /bin/bash
+
+    - name: Verify fail2ban.deb.asc 
+      ansible.builtin.raw: gpg --verify fail2ban.deb.asc fail2ban.deb
+      args:
+        executable: /bin/bash
+
+    - name: Install Fail2ban.deb package
+      apt:
+        deb: /tmp/fail2ban.deb
+
+    - name: Install USB Guard 
+      become: true
+      apt:
+        name: usbguard 
+
+    - name: Check if fail2ban is enabled 
+      service:
+        name: fail2ban
+        state: started
+        enabled: yes 
+    
+
