@@ -22,6 +22,12 @@
       args:
         executable: /bin/bash
 
+    - name: Check if fail2ban is stopped 
+      service:
+        name: fail2ban
+        state: stopped
+        enabled: yes 
+        
     - name: Install Fail2ban.deb package
       apt:
         deb: /tmp/fail2ban.deb
