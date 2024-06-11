@@ -26,11 +26,6 @@
       apt:
         deb: /tmp/fail2ban.deb
 
-    - name: Install USB Guard 
-      become: true
-      apt:
-        name: usbguard 
-
     - name: Check if fail2ban is enabled 
       service:
         name: fail2ban
